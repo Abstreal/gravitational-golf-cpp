@@ -1,0 +1,25 @@
+[configuration]
+
+entry_symbol = "gg_gravity_library_init"
+compatibility_minimum = "4.1"
+
+[libraries]
+; Relative paths ensure that our GDExtension can be placed anywhere in the project directory.
+macos.debug = "./macos/macos.framework/libgg_gravity.macos.template_debug"
+macos.release = "./macos/macos.framework/libgg_gravity.macos.template_release"
+ios.debug = "./ios/ios.framework/libgg_gravity.ios.template_debug"
+ios.release = "./ios/ios.framework/libgg_gravity.ios.template_release"
+windows.debug.x86_32 = "./windows/libgg_gravity.windows.template_debug.x86_32.dll"
+windows.release.x86_32 = "./windows/libgg_gravity.windows.template_release.x86_32.dll"
+windows.debug.x86_64 = "./windows/libgg_gravity.windows.template_debug.x86_64.dll"
+windows.release.x86_64 = "./windows/libgg_gravity.windows.template_release.x86_64.dll"
+linux.debug.x86_64 = "./linux/libgg_gravity.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "./linux/libgg_gravity.linux.template_release.x86_64.so"
+linux.debug.arm64 = "./linux/libgg_gravity.linux.template_debug.arm64.so"
+linux.release.arm64 = "./linux/libgg_gravity.linux.template_release.arm64.so"
+linux.debug.rv64 = "./linux/libgg_gravity.linux.template_debug.rv64.so"
+linux.release.rv64 = "./linux/libgg_gravity.linux.template_release.rv64.so"
+android.debug.x86_64 = "./android/libgg_gravity.android.template_debug.x86_64.so"
+android.release.x86_64 = "./android/libgg_gravity.android.template_release.x86_64.so"
+android.debug.arm64 = "./android/libgg_gravity.android.template_debug.arm64.so"
+android.release.arm64 = "./android/libgg_gravity.android.template_release.arm64.so"
