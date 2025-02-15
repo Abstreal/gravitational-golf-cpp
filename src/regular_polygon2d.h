@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdint.h>
 #include <godot_cpp/classes/polygon2d.hpp>
 
 using namespace godot;
