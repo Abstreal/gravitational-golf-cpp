@@ -20,7 +20,7 @@ void RegularPolygon2D::set_nsides(int nsides_p) {
     update_polygon();
 }
 
-size_t RegularPolygon2D::get_nsides() {
+int RegularPolygon2D::get_nsides() {
     return nsides;
 }
 
