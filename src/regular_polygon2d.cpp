@@ -15,7 +15,7 @@ void RegularPolygon2D::_bind_methods() {
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "radius"), "set_radius", "get_radius");
 }
 
-void RegularPolygon2D::set_nsides(size_t nsides_p) {
+void RegularPolygon2D::set_nsides(int nsides_p) {
     nsides = nsides_p;
     update_polygon();
 }

@@ -7,7 +7,7 @@ using namespace godot;
 class RegularPolygon2D : public Polygon2D {
     GDCLASS(RegularPolygon2D, Polygon2D);
 
-    size_t nsides;
+    int nsides;
     double radius;
 
 protected:
@@ -15,7 +15,7 @@ protected:
 
 public:
 
-    void set_nsides(size_t nsides_p);
+    void set_nsides(int nsides_p);
     size_t get_nsides();
 
     void set_radius(double radius_p);
