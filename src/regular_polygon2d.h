@@ -16,7 +16,7 @@ protected:
 public:
 
     void set_nsides(long nsides_p);
-    int get_nsides();
+    long get_nsides();
 
     void set_radius(double radius_p);
     double get_radius();
