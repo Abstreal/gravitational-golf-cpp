@@ -1,6 +1,7 @@
 #pragma once
 
 #include <godot_cpp/classes/character_body2d.hpp>
+#include "regular_polygon2d.h"
 
 using namespace godot;
 
@@ -19,6 +20,8 @@ public:
 
     void set_density(double density_p);
     double get_density();
+
+    void apply_radius();
 
     GBody();
 };

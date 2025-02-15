@@ -22,6 +22,9 @@ public:
     void set_radius(double radius_p);
     double get_radius();
 
+    double get_delta_theta();
+    Vector2 get_canon_vector();
+
     void update_polygon();
 
     RegularPolygon2D();

@@ -19,7 +19,6 @@ void RegularPolygon2D::set_nsides(int64_t nsides_p) {
     nsides = nsides_p;
     update_polygon();
 }
-
 int64_t RegularPolygon2D::get_nsides() {
     return nsides;
 }
@@ -28,23 +27,30 @@ void RegularPolygon2D::set_radius(double radius_p) {
     radius = radius_p;
     update_polygon();
 }
+double RegularPolygon2D::get_radius() {
+    return radius;
+}
+
+double RegularPolygon2D::get_delta_theta() {
+    return 2 * PI/get_nsides();
+}
+
+Vector2 RegularPolygon2D::get_canon_vector() {
+    return Vector2(0, get_radius());
+}
 
 void RegularPolygon2D::update_polygon() {
     size_t n = get_nsides();
     Array pol_arr = Array();
-    Vector2 canonical_vertex = Vector2(0, get_radius());
+    Vector2 canonical_vertex = get_canon_vector();
     pol_arr.push_back(canonical_vertex);
-    float delta_theta = 2 * PI/n;
+    float delta_theta = get_delta_theta();
     for (size_t i = 1; i < n; ++i) {
         Vector2 loc = canonical_vertex.rotated(delta_theta * i);
         pol_arr.push_back(loc);
     }
     PackedVector2Array pol = PackedVector2Array(pol_arr);
     set_polygon(pol);
-}
-
-double RegularPolygon2D::get_radius() {
-    return radius;
 }
 
 RegularPolygon2D::RegularPolygon2D() {
