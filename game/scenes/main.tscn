@@ -16,3 +16,8 @@ position = Vector2(664, 425)
 [node name="GBody" parent="GravityHandler" instance=ExtResource("1_ir8lu")]
 mass = 50.0
 position = Vector2(227, 316)
+
+[node name="RegularPolygon2D" type="RegularPolygon2D" parent="."]
+nsides = 16
+radius = 50.0
+polygon = PackedVector2Array(0, 50, -19.1342, 46.194, -35.3553, 35.3553, -46.194, 19.1342, -50, 1.56958e-05, -46.194, -19.1342, -35.3554, -35.3553, -19.1342, -46.194, -3.13916e-05, -50, 19.1341, -46.194, 35.3553, -35.3554, 46.194, -19.1342, 50, -4.70875e-05, 46.194, 19.1341, 35.3554, 35.3553, 19.1342, 46.1939)
