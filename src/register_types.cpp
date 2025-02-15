@@ -4,7 +4,9 @@
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
 
+//new class header files
 #include "gravity_handler.h"
+#include "gbody.h"
 
 using namespace godot;
 
@@ -14,6 +16,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 		return;
 	}
 	GDREGISTER_CLASS(GravityHandler);
+	GDREGISTER_CLASS(GBody);
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {

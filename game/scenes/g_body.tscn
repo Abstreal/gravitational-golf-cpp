@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqnqe57o37yvy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ig6jy"]
+
+[node name="GBody" type="GBody"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ig6jy")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -10, 10, 0, 0, 10, -10, 0)

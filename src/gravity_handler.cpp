@@ -6,7 +6,7 @@ void GravityHandler::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_total_accel", "body_node"), &GravityHandler::get_total_accel);
     ClassDB::bind_method(D_METHOD("apply_accels", "delta"), &GravityHandler::apply_accels);
     ClassDB::bind_method(D_METHOD("set_G", "G_p"), &GravityHandler::set_G);
-    ClassDB::bind_method(D_METHOD("g_G"), &GravityHandler::get_G);
+    ClassDB::bind_method(D_METHOD("get_G"), &GravityHandler::get_G);
 
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "G"), "set_G", "get_G");
 }
