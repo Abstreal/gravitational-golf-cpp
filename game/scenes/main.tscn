@@ -5,17 +5,15 @@
 [node name="Main" type="Node2D"]
 
 [node name="GravityHandler" type="GravityHandler" parent="."]
-G = 10000.0
+G = 100.0
 script = ExtResource("1_rwapj")
 
-[node name="GBody" type="GBody" parent="GravityHandler"]
-mass = 3000.0
-initial_velocity = Vector2(0, 10)
-position = Vector2(168, 182)
-velocity = Vector2(0, 10)
-
-[node name="GBody2" type="GBody" parent="GravityHandler"]
-mass = 5000.0
+[node name="Biggy" type="GBody" parent="GravityHandler"]
+mass = 30000.0
 initial_velocity = Vector2(0, 0)
-position = Vector2(643, 195)
+position = Vector2(500, 300)
 velocity = Vector2(0, 0)
+
+[node name="Smallie" type="GBody" parent="GravityHandler"]
+mass = 3000.0
+position = Vector2(200, 300)
