@@ -10,6 +10,7 @@ class GBody : public CharacterBody2D {
 
     double mass;
     double density;
+    Vector2 initial_velocity;
 
 protected:
     static void _bind_methods();
@@ -21,7 +22,12 @@ public:
     void set_density(double density_p);
     double get_density();
 
+    void set_initial_velocity(Vector2 initial_velocity_p);
+    Vector2 get_initial_velocity();
+
     void apply_radius();
+    void apply_initial_velocity();
 
     GBody();
+
 };

@@ -10,9 +10,12 @@ void GBody::_bind_methods() {
     ClassDB::bind_method(D_METHOD("get_mass"), &GBody::get_mass);
     ClassDB::bind_method(D_METHOD("set_density", "density_p"), &GBody::set_density);
     ClassDB::bind_method(D_METHOD("get_density"), &GBody::get_density);
+    ClassDB::bind_method(D_METHOD("set_initial_velocity", "initial_velocity_p"), &GBody::set_initial_velocity);
+    ClassDB::bind_method(D_METHOD("get_initial_velocity"), &GBody::get_initial_velocity);
 
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "mass"), "set_mass", "get_mass");
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "density"), "set_density", "get_density");
+    ADD_PROPERTY(PropertyInfo(Variant::VECTOR2, "initial_velocity"), "set_initial_velocity", "get_initial_velocity");
 }
 
 void GBody::set_mass(double mass_p) {
@@ -32,6 +35,14 @@ void GBody::set_density(double density_p) {
 }
 double GBody::get_density() {
     return density;
+}
+
+void GBody::set_initial_velocity(Vector2 initial_velocity_p) {
+    initial_velocity = initial_velocity_p;
+    set_velocity(initial_velocity);
+}
+Vector2 GBody::get_initial_velocity() {
+    return initial_velocity;
 }
 
 void GBody::apply_radius() {
@@ -59,8 +70,13 @@ void GBody::apply_radius() {
     }
 }
 
+void GBody::apply_initial_velocity() {
+    set_velocity(get_initial_velocity());
+}
+
 GBody::GBody() {
     mass = PI * 10000;
     density = 1;
     apply_radius();
+    set_initial_velocity(Vector2(0, 100));
 }

@@ -54,7 +54,7 @@ void GravityHandler::apply_accels(double delta) {
         Vector2 accel_j = get_total_accel(node_j);
         GBody* body_j = Object::cast_to<GBody>(node_j);
         Vector2 body_j_initial_velocity = body_j->get_velocity();
-        body_j->set_velocity(accel_j * delta);
+        body_j->set_velocity(body_j_initial_velocity + accel_j * delta);
 
         body_j->move_and_collide(body_j->get_velocity());
     }

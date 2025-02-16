@@ -9,9 +9,13 @@ G = 10000.0
 script = ExtResource("1_rwapj")
 
 [node name="GBody" type="GBody" parent="GravityHandler"]
-mass = 1000.0
-position = Vector2(210, 233)
+mass = 3000.0
+initial_velocity = Vector2(0, 10)
+position = Vector2(168, 182)
+velocity = Vector2(0, 10)
 
 [node name="GBody2" type="GBody" parent="GravityHandler"]
-mass = 30000.0
-position = Vector2(799, 274)
+mass = 5000.0
+initial_velocity = Vector2(0, 0)
+position = Vector2(643, 195)
+velocity = Vector2(0, 0)
