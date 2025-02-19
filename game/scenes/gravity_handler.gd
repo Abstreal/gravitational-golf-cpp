@@ -5,7 +5,7 @@ extends GravityHandler
 func _ready() -> void:
 	pass # Replace with function body.
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	print($Smallie.velocity.length());
 	apply_accels(delta)
