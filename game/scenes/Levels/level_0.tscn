@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5bwab3f7hdjt"]
+
+[ext_resource type="PackedScene" uid="uid://cbo4j6djh48j" path="res://scenes/Levels/BaseLevel.tscn" id="1_m3onk"]
+
+[node name="Level0" instance=ExtResource("1_m3onk")]
+
+[node name="Label" parent="Control" index="0"]
+text = "Level0"
+
+[node name="GBody" type="GBody" parent="GravityHandler" index="0"]
+initial_velocity = Vector2(1, 0)
+velocity = Vector2(1, 0)

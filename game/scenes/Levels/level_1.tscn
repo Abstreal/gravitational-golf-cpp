@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr5n16h6n7v24"]
+
+[ext_resource type="PackedScene" uid="uid://cbo4j6djh48j" path="res://scenes/Levels/BaseLevel.tscn" id="1_ihxbb"]
+
+[node name="level_1" instance=ExtResource("1_ihxbb")]
+level_name = "Tour"
+
+[node name="Label" parent="Control" index="0"]
+text = "Level1"

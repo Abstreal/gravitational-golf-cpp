@@ -3,7 +3,6 @@
 #include <godot_cpp/classes/character_body2d.hpp>
 #include "regular_polygon2d.h"
 
-
 using namespace godot;
 
 class GBody : public CharacterBody2D {
