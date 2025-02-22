@@ -61,5 +61,5 @@ void GravityHandler::apply_accels(double delta) {
 }
 
 GravityHandler::GravityHandler() {
-    G = 1;
+    G = 100;
 }

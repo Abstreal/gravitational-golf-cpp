@@ -9,13 +9,13 @@ using namespace godot;
 class GBody : public CharacterBody2D {
     GDCLASS(GBody, CharacterBody2D);
 
+    // all properties of the GBody
     double mass;
     double density;
     double radius;
+    Vector2 initial_velocity;
 
     Vector3 mdr_priorities;
-
-    Vector2 initial_velocity;
 
 protected:
     static void _bind_methods();
