@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://br8ykoorns51h"]
+
+[ext_resource type="Shader" path="res://resources/gbody3.gdshader" id="1_m4wjd"]
+
+[resource]
+shader = ExtResource("1_m4wjd")
+shader_parameter/radius = 0.5
+shader_parameter/n = 0.5
+shader_parameter/delta_n = 0.01
+shader_parameter/delta_n_f = 10.0

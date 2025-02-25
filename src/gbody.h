@@ -1,7 +1,6 @@
 #pragma once
 
 #include <godot_cpp/classes/character_body2d.hpp>
-#include "regular_polygon2d.h"
 #include <godot_cpp/classes/texture2d.hpp>
 #include <godot_cpp/classes/shader_material.hpp>
 

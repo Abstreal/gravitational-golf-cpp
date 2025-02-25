@@ -7,7 +7,6 @@
 //new class header files
 #include "gravity_handler.h"
 #include "gbody.h"
-#include "regular_polygon2d.h"
 
 using namespace godot;
 
@@ -18,7 +17,6 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	}
 	GDREGISTER_CLASS(GravityHandler);
 	GDREGISTER_CLASS(GBody);
-	GDREGISTER_CLASS(RegularPolygon2D);
 
 }
 

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bxrttuyj4v2g4"]
+
+[ext_resource type="Shader" path="res://resources/gbody2.gdshader" id="1_govgp"]
+
+[resource]
+shader = ExtResource("1_govgp")
+shader_parameter/radius = 0.5
+shader_parameter/n = 3.0

@@ -1,10 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://omcwawu2rdpq"]
+[gd_scene load_steps=6 format=3 uid="uid://omcwawu2rdpq"]
 
 [ext_resource type="Texture2D" uid="uid://bclu3g3t4ivlc" path="res://images/whitesquare.png" id="1_aufg6"]
+[ext_resource type="Script" path="res://gravity_handler.gd" id="1_ch127"]
 [ext_resource type="Material" uid="uid://d1a085qdcigxq" path="res://resources/gbody_shader_material.tres" id="2_20nma"]
+[ext_resource type="Material" uid="uid://bxrttuyj4v2g4" path="res://resources/gbody_shader_material2.tres" id="3_ybf68"]
+[ext_resource type="Material" uid="uid://br8ykoorns51h" path="res://resources/gbody_shader_material3.tres" id="5_b511g"]
 
 [node name="Main" type="Node2D"]
 
-[node name="GBody" type="GBody" parent="."]
+[node name="GravityHandler" type="GravityHandler" parent="."]
+G = 100.0
+script = ExtResource("1_ch127")
+
+[node name="GBody" type="GBody" parent="GravityHandler"]
 texture = ExtResource("1_aufg6")
 smaterial = ExtResource("2_20nma")
+
+[node name="GBody2" type="GBody" parent="GravityHandler"]
+texture = ExtResource("1_aufg6")
+smaterial = ExtResource("3_ybf68")
+position = Vector2(520, 226)
+
+[node name="GBody3" type="GBody" parent="GravityHandler"]
+texture = ExtResource("1_aufg6")
+smaterial = ExtResource("5_b511g")
+position = Vector2(166, 350)
