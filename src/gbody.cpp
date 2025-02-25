@@ -2,6 +2,7 @@
 #include <godot_cpp/core/class_db.hpp>
 
 #include <godot_cpp/classes/collision_shape2d.hpp>
+#include <godot_cpp/classes/sprite2d.hpp>
 #include <godot_cpp/classes/circle_shape2d.hpp>
 #include "math_constants.h"
 
@@ -16,6 +17,14 @@ void GBody::_bind_methods() {
     ClassDB::bind_method(D_METHOD("set_radius", "radius_p"), &GBody::set_radius);
     ClassDB::bind_method(D_METHOD("get_radius"), &GBody::get_radius);
     ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "radius"), "set_radius", "get_radius");
+
+    ClassDB::bind_method(D_METHOD("set_texture", "texture_p"), &GBody::set_texture);
+    ClassDB::bind_method(D_METHOD("get_texture"), &GBody::get_texture);
+    ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "texture"), "set_texture", "get_texture");
+
+    ClassDB::bind_method(D_METHOD("set_smaterial", "smaterial_p"), &GBody::set_smaterial);
+    ClassDB::bind_method(D_METHOD("get_smaterial"), &GBody::get_smaterial);
+    ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "smaterial"), "set_smaterial", "get_smaterial");
 
     ClassDB::bind_method(D_METHOD("get_mdr_priorities"), &GBody::get_mdr_priorities);
     ClassDB::bind_method(D_METHOD("set_mdr_priorities", "mdr_priorities_p"), &GBody::set_mdr_priorities);
@@ -72,6 +81,44 @@ Vector2 GBody::get_initial_velocity() {
     return initial_velocity;
 }
 
+void GBody::set_texture(const Ref<Texture2D> texture_p) {
+    texture = texture_p;
+    if (texture_p != NULL) {
+        apply_texture();
+    }
+}
+Ref<Texture2D> GBody::get_texture() {
+    return texture;
+}
+
+void GBody::set_smaterial(const Ref<ShaderMaterial> smaterial_p) {
+    shader_material = smaterial_p;
+    if (smaterial_p != NULL) {
+        apply_smaterial();
+    }
+}
+Ref<ShaderMaterial> GBody::get_smaterial() {
+    return shader_material;
+}
+void GBody::apply_smaterial() {
+    /*
+    Assumes that get_child(1) exists and is the Sprite2D
+    */
+    Sprite2D* spr = Object::cast_to<Sprite2D>(get_child(1));
+    spr->set_material(get_smaterial());
+}
+
+void GBody::apply_texture() {
+    /*
+    Assumes that:
+        1. get_texture() != NULL
+        2. get_child(1) is said Sprite2D
+    */
+
+    Sprite2D* spr = Object::cast_to<Sprite2D>(get_child(1));
+    spr->set_texture(get_texture());
+}
+
 void GBody::apply_mass() {
     double new_mass = get_density() * PI * pow(get_radius(), 2);
     set_mass_noupdate(new_mass);
@@ -85,26 +132,13 @@ void GBody::apply_density() {
 void GBody::apply_radius(bool recalculate_radius=true) {
     double new_radius = recalculate_radius ? sqrt(get_mass()/(PI * get_density())) : get_radius();
 
-    int l = get_child_count();
-    if (l == 0) {
-        CollisionShape2D* colshape = memnew(CollisionShape2D);
-        Ref<CircleShape2D> colshape_res = memnew(CircleShape2D);
-        colshape_res->set_radius(new_radius);
-        colshape->set_shape(colshape_res);
-    
-        RegularPolygon2D* regpol = memnew(RegularPolygon2D);
-        regpol->set_radius(new_radius);
-    
-        add_child(colshape);
-        add_child(regpol);
-    } else {
-        CollisionShape2D* colshape = Object::cast_to<CollisionShape2D>(get_child(0));
-        Ref<CircleShape2D> colshape_res = Object::cast_to<CircleShape2D>(*(colshape->get_shape()));
-        colshape_res->set_radius(new_radius);
+    CollisionShape2D* colshape = Object::cast_to<CollisionShape2D>(get_child(0));
+    Ref<CircleShape2D> colshape_res = Object::cast_to<CircleShape2D>(*(colshape->get_shape()));
+    colshape_res->set_radius(new_radius);
 
-        RegularPolygon2D* regpol = Object::cast_to<RegularPolygon2D>(get_child(1));
-        regpol->set_radius(new_radius);
-    }
+    Sprite2D* spr = Object::cast_to<Sprite2D>(get_child(1));
+    spr->set_scale(Vector2(1, 1) * new_radius/8);
+
     set_radius_noupdate(new_radius);
 }
 
@@ -163,7 +197,20 @@ void GBody::set_mdr_priorities(Vector3 mdr_priorities_p) {
 GBody::GBody() {
     mass = PI * 10000;
     density = 1;
-    apply_radius();
     mdr_priorities = Vector3(0, 1, 2);
     set_initial_velocity(Vector2(0, 0));
+
+    // Create children
+    CollisionShape2D* colshape = memnew(CollisionShape2D);
+    Ref<CircleShape2D> colshape_res = memnew(CircleShape2D);
+    colshape_res->set_radius(get_radius());
+    colshape->set_shape(colshape_res);
+    add_child(colshape);
+
+    Sprite2D* spr = memnew(Sprite2D);
+    add_child(spr);
+
+    set_texture(NULL);
+
+    apply_radius();
 }

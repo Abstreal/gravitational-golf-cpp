@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://8rorl6esdg6c"]
+
+[ext_resource type="Material" uid="uid://d1a085qdcigxq" path="res://resources/gbody_shader_material.tres" id="1_mds2o"]
+[ext_resource type="Texture2D" uid="uid://bclu3g3t4ivlc" path="res://images/whitesquare.png" id="1_npvat"]
+
+[node name="Sprite2D" type="Sprite2D"]
+material = ExtResource("1_mds2o")
+texture = ExtResource("1_npvat")

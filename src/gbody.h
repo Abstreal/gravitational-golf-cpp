@@ -2,7 +2,8 @@
 
 #include <godot_cpp/classes/character_body2d.hpp>
 #include "regular_polygon2d.h"
-
+#include <godot_cpp/classes/texture2d.hpp>
+#include <godot_cpp/classes/shader_material.hpp>
 
 using namespace godot;
 
@@ -16,6 +17,12 @@ class GBody : public CharacterBody2D {
     Vector3 mdr_priorities;
 
     Vector2 initial_velocity;
+
+    Ref<Texture2D> texture;
+    Ref<ShaderMaterial> shader_material;
+
+private:
+    bool is_sprite_initialized;
 
 protected:
     static void _bind_methods();
@@ -37,6 +44,15 @@ public:
 
     void set_initial_velocity(Vector2 initial_velocity_p);
     Vector2 get_initial_velocity();
+
+    void set_texture(const Ref<Texture2D> texture_p);
+    Ref<Texture2D> get_texture();
+
+    void set_smaterial(const Ref<ShaderMaterial> smaterial_p);
+    Ref<ShaderMaterial> get_smaterial(); 
+
+    void apply_texture();
+    void apply_smaterial();
 
     void update_mdr(char what_changed);
     void apply_mass();

@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d1a085qdcigxq"]
+
+[ext_resource type="Shader" path="res://resources/gbody.gdshader" id="1_r1m3a"]
+
+[resource]
+shader = ExtResource("1_r1m3a")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://omcwawu2rdpq"]
+
+[ext_resource type="Texture2D" uid="uid://bclu3g3t4ivlc" path="res://images/whitesquare.png" id="1_aufg6"]
+[ext_resource type="Material" uid="uid://d1a085qdcigxq" path="res://resources/gbody_shader_material.tres" id="2_20nma"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GBody" type="GBody" parent="."]
+texture = ExtResource("1_aufg6")
+smaterial = ExtResource("2_20nma")
